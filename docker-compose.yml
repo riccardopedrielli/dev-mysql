@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  dev-mysql:
+    image: mysql:${MYSQL_IMAGE_TAG}
+    container_name: dev-mysql
+    hostname: dev-mysql
+    restart: unless-stopped
+    command: [
+      "--character-set-server=${MYSQL_CHARSET}",
+      "--collation-server=${MYSQL_COLLATION}",
+      "--innodb-use-native-aio=0",
+      "--lower_case_table_names=1",
+      "--max_allowed_packet=16M"
+    ]
+    environment:
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER_NAME}
+      - MYSQL_PASSWORD=${MYSQL_USER_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    ports:
+      - "${MYSQL_PORT}:3306"
+    networks:
+      - dev-mysql
+    volumes:
+      - ${MYSQL_DATA_DIR}:/var/lib/mysql
+    logging:
+      driver: local
+
+  dev-mysql-adminer:
+    image: adminer:${MYSQL_ADMINER_IMAGE_TAG}
+    container_name: dev-mysql-adminer
+    hostname: dev-mysql-adminer
+    restart: unless-stopped
+    environment:
+      - ADMINER_DEFAULT_SERVER=dev-mysql
+      - ADMINER_DESIGN=${MYSQL_ADMINER_THEME}
+    ports:
+      - "${MYSQL_ADMINER_PORT}:8080"
+    networks:
+      - dev-mysql
+    logging:
+      driver: local
+
+networks:
+  dev-mysql:
+    name: dev-mysql
