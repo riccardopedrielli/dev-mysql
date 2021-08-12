@@ -10,8 +10,8 @@ services:
       "--character-set-server=${MYSQL_CHARSET}",
       "--collation-server=${MYSQL_COLLATION}",
       "--innodb-use-native-aio=0",
-      "--lower_case_table_names=1",
-      "--max_allowed_packet=16M"
+      "--lower_case_table_names=${MYSQL_LOWER_CASE_TABLE_NAMES}",
+      "--max_allowed_packet=${MYSQL_MAX_ALLOWED_PACKET}"
     ]
     environment:
       - MYSQL_ROOT_HOST=%
