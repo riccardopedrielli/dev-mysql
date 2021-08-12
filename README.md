@@ -57,9 +57,9 @@ On Windows the services are available at the virtual machine's ip. Usually `192.
 
 ### Default accounts
 
-| User   | Password     |
-| :----- | :----------- |
-| `root` | `DevR00tPwd` |
-| `dev`  | `DevUs3rPwd` |
+| User   | Password |
+| :----- | :------- |
+| `root` | `root`   |
+| `dev`  | `dev`    |
 
 A database called `test` is also created, with all privileges granted to the user `dev`.
