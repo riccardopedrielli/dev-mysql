@@ -4,11 +4,17 @@ MySQL service for development and testing purposes.
 
 ## Prerequisites
 
-Install [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
+Install [Docker](https://docs.docker.com/engine/install/)
+and [Docker Compose](https://docs.docker.com/compose/install/).
+
+The logging driver is set to `local`.  
+Follow this guide to configure the docker daemon to use the
+[local file logging driver](https://docs.docker.com/config/containers/logging/local/).
 
 ## Configuration
 
-To set a custom configuration create a file in `~/.config/docker-dev-tools/dev-mysql/settings.env` and add the variables to override.
+To set a custom configuration create a file in `~/.config/docker-dev-tools/dev-mysql/settings.env`
+and add the variables to override.
 
 Use `./servicectl.sh info` for the list of available variables and their values.
 
@@ -26,7 +32,8 @@ When setting paths, always use the unix slash `/` even on Windows.
 
 By default the persistence directory is set to `~/.local/share/docker-dev-tools/dev-mysql`.
 
-Any custom directory must be set in a path inside the user's home directory. Setting it outside is not supported and most probably won't work.
+Any custom directory must be set in a path inside the user's home directory.
+Setting it outside is not supported and most probably won't work.
 
 There's no need to manually create directory, Docker Compose will take care if it.
 
@@ -46,7 +53,8 @@ To manage the service, execute `./servicectl.sh <command>`.
 
 On Linux and macOS the services are available at `localhost`.
 
-On Windows the services are available at the virtual machine's ip. Usually `192.168.99.100`, can be inspected with `docker-machine ip`.
+On Windows the services are available at the virtual machine's ip. Usually `192.168.99.100`,
+can be inspected with `docker-machine ip`.
 
 ### Services
 
