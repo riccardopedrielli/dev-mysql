@@ -56,7 +56,7 @@ On Linux and macOS the services are available at `localhost`.
 On Windows the services are available at the virtual machine's ip. Usually `192.168.99.100`,
 can be inspected with `docker-machine ip`.
 
-### Services
+### Default Ports
 
 | Type                | Application | Default port |
 | :------------------ | :---------- | :----------: |
