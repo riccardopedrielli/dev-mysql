@@ -32,8 +32,8 @@ When setting paths, always use the unix slash `/` even on Windows.
 
 By default the persistence directory is set to `~/.local/share/docker-dev-tools/dev-mysql`.
 
-Any custom directory must be set in a path inside the user's home directory.
-Setting it outside is not supported and most probably won't work.
+Any custom directory should be set in a path inside the user's home directory.
+Setting it outside is not supported and, depending on the host platform, may not work.
 
 There's no need to manually create directory, Docker Compose will take care if it.
 
@@ -56,7 +56,7 @@ On Linux and macOS the services are available at `localhost`.
 On Windows the services are available at the virtual machine's ip. Usually `192.168.99.100`,
 can be inspected with `docker-machine ip`.
 
-### Default Ports
+### Default ports
 
 | Type                | Application | Default port |
 | :------------------ | :---------- | :----------: |
