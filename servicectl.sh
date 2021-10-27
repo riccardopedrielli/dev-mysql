@@ -39,6 +39,14 @@ echo_error()
     echo "$(tput setaf 1)${*}$(tput sgr0)"
 }
 
+check_bin()
+{
+    if ! command -v "${1}" &> /dev/null; then
+        echo_error "Error: \"${1}\" is required but not installed."
+        exit 1
+    fi
+}
+
 load_settings()
 {
     set -o allexport
@@ -129,6 +137,9 @@ service_logs()
 
 main()
 {
+    check_bin docker
+    check_bin docker-compose
+
     cd "${SCRIPT_DIR}"
 
     load_settings
